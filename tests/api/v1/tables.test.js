@@ -24,7 +24,7 @@ describe('tables', () => {
           "type": "tables",
           "id": "2",
           "attributes": {
-            "name": "second table",
+            "name": "Second table",
             "seats-count": 5
           }
         }]
@@ -32,7 +32,7 @@ describe('tables', () => {
 
       // expect(response.status).toEqual(200);
       expect(response.type).toEqual('application/vnd.api+json');
-      expect(response.body.data).toEqual(expectedResponse);
+      expect(response.body).toEqual(expectedResponse);
     });
   });
 });

@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/miksturait/lemme-api#readme",
   "dependencies": {
+    "jsonapi-serializer": "^3.5.6",
     "koa": "^2.5.2",
     "koa-router": "^7.4.0"
   },
