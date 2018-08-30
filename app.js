@@ -1,11 +1,10 @@
 const Koa = require('koa');
 const Router = require('koa-router');
 const tablesSerializer = require('./tables-serializer');
+const database = require('./database.js');
 
 const app = new Koa();
 const router = new Router();
-
-
 
 const setContentType = async (ctx, next) => {
   await next();
