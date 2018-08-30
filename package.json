@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "test-watch": "node node_modules/.bin/jest --watch"
+    "test-watch": "node node_modules/.bin/jest --watch",
+    "dev": "node -r dotenv/config server/index.js dotenv_config_path=config/secrets.env"
   },
   "jest": {
     "testEnvironment": "node"
