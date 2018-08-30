@@ -20,10 +20,6 @@ router.get('/api/v1/tables', async (ctx, next) => {
   ];
 
   const payload = tablesSerializer.serialize(data);
-  payload.links = {
-    self: 'http://localhost:3000/api/v1/tables'
-  };
-
 
   ctx.body = JSON.stringify(payload)
   await next()
