@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/miksturait/lemme-api/issues"
   },
-  "homepage": "https://github.com/miksturait/lemme-api#readme"
+  "homepage": "https://github.com/miksturait/lemme-api#readme",
+  "dependencies": {
+    "koa": "^2.5.2"
+  }
 }
