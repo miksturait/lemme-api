@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test-watch": "node node_modules/.bin/jest --watch"
   },
   "jest": {
     "testEnvironment": "node"
