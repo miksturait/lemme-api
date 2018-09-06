@@ -30,7 +30,7 @@ describe('tables', () => {
         }]
       }
 
-      // expect(response.status).toEqual(200);
+      expect(response.status).toEqual(200);
       expect(response.type).toEqual('application/vnd.api+json');
       expect(response.body).toEqual(expectedResponse);
     });
