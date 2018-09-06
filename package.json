@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "test-watch": "node node_modules/.bin/jest --watch",
-    "dev": "node -r dotenv/config server/index.js dotenv_config_path=config/secrets.env"
+    "dev": "nodemon -r dotenv/config server/index.js dotenv_config_path=config/secrets.env"
   },
   "jest": {
     "testEnvironment": "node"
@@ -27,7 +27,8 @@
     "koa": "^2.5.2",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
-    "mongoose": "^5.2.11"
+    "mongoose": "^5.2.11",
+    "nodemon": "^1.18.4"
   },
   "devDependencies": {
     "jest": "^23.5.0",
