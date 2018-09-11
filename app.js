@@ -1,7 +1,7 @@
 const Koa = require('koa');
 const Router = require('koa-router');
 const tablesSerializer = require('./tables-serializer');
-const database = require('./database.js');
+const database = require('./database');
 const Table = require('./Table');
 
 const app = new Koa();

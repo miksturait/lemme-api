@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "MONGODB_URI=mongodb://localhost:27017/lemme-api jest",
     "test-watch": "node node_modules/.bin/jest --watch",
     "dev": "node -r dotenv/config server/index.js dotenv_config_path=config/secrets.env"
   },
@@ -29,6 +29,7 @@
     "mongoose": "^5.2.11"
   },
   "devDependencies": {
+    "mongodb-memory-server": "^2.1.0",
     "jest": "^23.5.0",
     "supertest": "^3.1.0"
   }

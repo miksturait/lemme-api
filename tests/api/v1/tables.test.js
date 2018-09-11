@@ -1,5 +1,9 @@
+const database = jest.mock('../../../database');
+
 const server = require('../../../server/index');
 const request = require('supertest');
+
+const Table = require('../../../Table');
 
 afterEach(() => {
   server.close();
@@ -8,6 +12,16 @@ afterEach(() => {
 describe('tables', () => {
   describe('#index', () => {
     test('returns all tables', async () => {
+      const firstTable = await Table.create({
+        "name": "First table",
+        "seatsCount": 10
+      });
+
+      const secondTable = await Table.create({
+        "name": "Second table",
+        "seatsCount": 5
+      });
+      
       const response = await request(server).get('/api/v1/tables');
       const expectedResponse = {
         "links": {
@@ -15,14 +29,14 @@ describe('tables', () => {
         },
         "data": [{
           "type": "tables",
-          "id": "1",
+          "id": `${firstTable.id}`,
           "attributes": {
             "name": "First table",
             "seats-count": 10
           }
         }, {
           "type": "tables",
-          "id": "2",
+          "id": `${secondTable.id}`,
           "attributes": {
             "name": "Second table",
             "seats-count": 5
