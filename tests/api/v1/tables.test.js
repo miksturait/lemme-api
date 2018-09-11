@@ -13,13 +13,13 @@ describe('tables', () => {
   describe('#index', () => {
     test('returns all tables', async () => {
       const firstTable = await Table.create({
-        "name": "First table",
-        "seatsCount": 10
+        name: "First table",
+        seatsCount: 10
       });
 
       const secondTable = await Table.create({
-        "name": "Second table",
-        "seatsCount": 5
+        name: "Second table",
+        seatsCount: 5
       });
       
       const response = await request(server).get('/api/v1/tables');
