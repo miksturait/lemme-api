@@ -43,7 +43,7 @@ router.post('/api/v1/tables', async (ctx, next) => {
   } else {
     const newTable = await Table.create(payload);
     const response = tablesSerializer.serialize(newTable);
-    ctx.body = JSON.stringify(response)
+    ctx.body = response
   }
 
   await next();
