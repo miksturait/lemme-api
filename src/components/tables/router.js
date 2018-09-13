@@ -1,21 +1,26 @@
 const Router = require('koa-router');
 const bodyParser = require('koa-bodyparser');
-const JSONApiParser = require('./middlewares/JSONApiParser');
 const { create, findAll } = require('./actions');
 const { create: createValidator } = require('./validators');
-const validate = require('./middlewares/validate');
+const {
+  jsonApiParser,
+  serialize,
+  validate
+} = require('./middlewares');
 
 const router = new Router();
 
 router.get('/api/v1/tables',
-  findAll
+  findAll,
+  serialize
 );
 
 router.post('/api/v1/tables',
   bodyParser(),
-  JSONApiParser,
+  jsonApiParser,
   validate(createValidator),
-  create
+  create,
+  serialize
 );
 
 module.exports = router;

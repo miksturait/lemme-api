@@ -1,11 +1,7 @@
-const Table = require('../model');
-const tablesSerializer = require('../tables-serializer');
+const { createTable } = require('../DAL');
 
 module.exports = async (ctx, next) => {
-  const newTable = await Table.create(ctx.request.body);
-  const response = tablesSerializer.serialize(newTable);
-
-  ctx.body = response;
+  ctx.body = await createTable(ctx.request.body);
 
   await next();
 }

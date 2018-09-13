@@ -1,10 +1,7 @@
-const Table = require('../model');
-const tablesSerializer = require('../tables-serializer');
+const { findAll } = require('../DAL');
 
 module.exports = async (ctx, next) => {
-  const tables = await Table.find({});
-  const payload = tablesSerializer.serialize(tables);
-  ctx.body = payload
+  ctx.request.body = await findAll();
 
   await next();
 };
