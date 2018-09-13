@@ -1,4 +1,4 @@
-const Table = require('../Table');
+const Table = require('../model');
 const tablesSerializer = require('../tables-serializer');
 
 module.exports = async (ctx, next) => {
