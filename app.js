@@ -1,56 +1,18 @@
+require('./database');
+
 const Koa = require('koa');
-const Router = require('koa-router');
-const bodyParser = require('koa-bodyparser');
-const tablesSerializer = require('./tables-serializer');
-const JSONAPIDeserializer = require('jsonapi-serializer').Deserializer;
-const database = require('./database.js');
-const Table = require('./Table');
-const Joi = require('joi');
+const tables = require('./src/components/tables');
+const logger = require('koa-logger')
 
 const app = new Koa();
-const router = new Router();
-
-const tableCreateSchema = Joi.object().keys({
-  seatsCount: Joi.number().min(1).max(30).required(),
-  name: Joi.string().required()
-});
 
 const setContentType = async (ctx, next) => {
   await next();
-
   ctx.type = 'application/vnd.api+json';
 };
 
-router.get('/api/v1/tables', async (ctx, next) => {
-  const tables = await Table.find({});
-  const payload = tablesSerializer.serialize(tables);
-
-  ctx.body = JSON.stringify(payload)
-  await next();
-});
-
-router.post('/api/v1/tables', async (ctx, next) => {
-  const deserializeOption = {
-    keyForAttribute: 'camelCase'
-  };
-  const payload = await new JSONAPIDeserializer(deserializeOption)
-    .deserialize(ctx.request.body);
-  const result = Joi.validate(payload, tableCreateSchema, { stripUnknown: true });
-
-  if (result.error) {
-    ctx.body = JSON.stringify(result.error);
-    ctx.status = 422;
-  } else {
-    const newTable = await Table.create(payload);
-    const response = tablesSerializer.serialize(newTable);
-    ctx.body = response
-  }
-
-  await next();
-});
-
-app.use(bodyParser());
+app.use(logger());
 app.use(setContentType);
-app.use(router.routes());
+app.use(tables.routes);
 
 module.exports = app;
