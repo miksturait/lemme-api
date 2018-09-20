@@ -24,8 +24,7 @@ router.post('/api/v1/tables',
 );
 
 router.delete('/api/v1/tables/:id',
-  destroy,
-  serialize
+  destroy
 );
 
 module.exports = router;
