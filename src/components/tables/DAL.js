@@ -9,7 +9,7 @@ const createTable = async (attributes) => {
 };
 
 const destroyTable = async (id) => {
-  return await Table.findByIdAndRemove(id);
+  return await Table.findOneAndDelete(id);
 };
 
 module.exports = {
