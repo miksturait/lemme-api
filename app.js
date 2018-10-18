@@ -20,7 +20,7 @@ app.use(tables.routes);
 io.on('connection', (socket) => {
   console.log('connected')
   socket.on('message', (msg) => {
-      io.sockets.emit('User connected');
+    io.sockets.emit('message', msg);
   });
 });
 
