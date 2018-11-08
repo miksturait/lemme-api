@@ -25,8 +25,8 @@ io.on('connection', (socket) => {
     let index = split.indexOf('socketUserName')
     let userName = split[index+1]
   
-    io.sockets.emit({
-      message,
+    io.sockets.emit('message', {
+      payload: message,
       userName
     })
   });
